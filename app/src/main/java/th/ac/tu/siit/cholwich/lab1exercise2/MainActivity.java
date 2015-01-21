@@ -4,9 +4,136 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
+
+    public void  Onclicked(View v){
+
+        EditText et;
+        et = (EditText)findViewById(R.id.etInput);
+        String s = et.getText().toString();
+
+        Double input = Double.parseDouble(s);
+
+
+        RadioGroup rgFrom =(RadioGroup)findViewById(R.id.rgFrom);
+        int selfrom = rgFrom.getCheckedRadioButtonId();
+
+        if(selfrom == R.id.rbFrmC) {
+
+            RadioGroup rgTo = (RadioGroup) findViewById(R.id.rgTo);
+            int Tocel = rgTo.getCheckedRadioButtonId();
+            if (Tocel == R.id.rbToC) {
+
+
+               TextView etOutput = (TextView)findViewById(R.id.tvOutput);
+                etOutput.setText(Double.toString(input));
+
+
+            }
+            else if (Tocel == R.id.rbToF) {
+
+
+
+                TextView etOutput = (TextView)findViewById(R.id.tvOutput);
+                input = input * 9/5 + 32 ;
+                etOutput.setText(Double.toString(input));
+
+
+            }
+
+            else  if (Tocel == R.id.rbToK) {
+
+
+
+                TextView etOutput = (TextView)findViewById(R.id.tvOutput);
+                input = input +273.15 ;
+                etOutput.setText(Double.toString(input));
+
+
+
+            }
+        }
+        if(selfrom == R.id.rbFrmF) {
+
+            RadioGroup rgTo = (RadioGroup) findViewById(R.id.rgTo);
+            int Tocel = rgTo.getCheckedRadioButtonId();
+            if (Tocel == R.id.rbToC) {
+
+
+                TextView etOutput = (TextView)findViewById(R.id.tvOutput);
+                input = (input-32.00) * 5/9 ;
+                etOutput.setText(Double.toString(input));
+
+
+            }
+            else if (Tocel == R.id.rbToF) {
+
+
+
+                TextView etOutput = (TextView)findViewById(R.id.tvOutput);
+
+                etOutput.setText(Double.toString(input));
+
+
+            }
+
+            else  if (Tocel == R.id.rbToK) {
+
+
+
+                TextView etOutput = (TextView)findViewById(R.id.tvOutput);
+                input = (input +495.67) * 5/9 ;
+                etOutput.setText(Double.toString(input));
+
+
+
+            }
+        }
+        if(selfrom == R.id.rbFrmK) {
+
+            RadioGroup rgTo = (RadioGroup) findViewById(R.id.rgTo);
+            int Tocel = rgTo.getCheckedRadioButtonId();
+            if (Tocel == R.id.rbToC) {
+
+
+                TextView etOutput = (TextView)findViewById(R.id.tvOutput);
+                input = input - 273.15 ;
+                etOutput.setText(Double.toString(input));
+
+
+            }
+            else if (Tocel == R.id.rbToF) {
+
+
+
+                TextView etOutput = (TextView)findViewById(R.id.tvOutput);
+                input = input * 9/5 - 459.67 ;
+                etOutput.setText(Double.toString(input));
+
+
+            }
+
+            else  if (Tocel == R.id.rbToK) {
+
+
+
+                TextView etOutput = (TextView)findViewById(R.id.tvOutput);
+
+                etOutput.setText(Double.toString(input));
+
+
+
+            }
+        }
+
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +144,6 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
